@@ -1,6 +1,14 @@
 import java.util.Scanner;
 
 public class Main {
+
+    public static double CLASIFICACION_BAJA=18.5;
+    public static double CLASIFICACION_MEDIA=25;
+    public static double CLASIFICACION_ALTA=30;
+    public static double FACTOR_CONVERSION=1.8;
+    public static double DESP_PUNTO_CERO=32;
+    public static double PI=3.1416;
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -25,6 +33,8 @@ public class Main {
                     double estaturaM= obtenerDouble(sc,"Ingresa la estatura en M -> 1.80");
                     double IMC= calcularIMC(pesoKg,estaturaM);
                     System.out.println("IMC: "+IMC);
+                    String clasificacion= obtenerClasificicacionIMC(IMC);
+                    System.out.println("Clasificación "+ clasificacion);
                     System.out.println("Seleccionaste calcular el IMC");
                     break;
                 case 2:
@@ -76,6 +86,17 @@ public class Main {
         return pesoKg/(estaturaM*estaturaM);
     }
 
+    /** * Metodo que clasifica IMC segun reglas de negocio establecidas
+     * * Bajo-> IMC<18.5
+     * * @param IMC -> Previamente calculado por el sistema
+     * * @return -> String de clasficacion */
+    public static String obtenerClasificicacionIMC(double IMC){
+        if(IMC<CLASIFICACION_BAJA) return "Peso Bajo";
+        else if(IMC<CLASIFICACION_MEDIA) return "Medio";
+        else if(IMC<CLASIFICACION_ALTA) return "Sobre peseo";
+        else return "Obesidad";
+    }
+
     /** Metodo que calcula el area de un rectangulo y devuelve el resultado
      *
      * @param baseCm -> base del rectangulo expresada en Centimetros
@@ -92,7 +113,7 @@ public class Main {
      * @return -> double de cenAfahrent
      */
     public static double calcularGrados(double gradCentrigrados) {
-        return (gradCentrigrados*1.8) + 32;
+        return (gradCentrigrados*FACTOR_CONVERSION) + DESP_PUNTO_CERO;
     }
 
     /** Metodo que calcula el area de un circulo y devuelve el resultado
@@ -101,7 +122,7 @@ public class Main {
      * @return -> double de areaCirculo
      */
     public static double calcAreaCirculo(double radio) {
-        return 3.14*(radio*radio);
+        return PI*(radio*radio);
     }
 
 }
