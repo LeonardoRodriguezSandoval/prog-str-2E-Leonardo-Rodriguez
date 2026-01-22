@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class ActividadIfElseTarifa {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int edad=0;
+        int edad;
         String respuesta=" ";
         boolean esEstudiante;
 
