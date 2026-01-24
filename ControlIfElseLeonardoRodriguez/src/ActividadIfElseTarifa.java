@@ -41,7 +41,7 @@ public class ActividadIfElseTarifa {
                 tarifa = 50;
             } else if (respuesta.equals("Si")|| respuesta.equals("si")){
                 esEstudiante=false;
-                tarifa = 50;
+                tarifa = 50;d
             }
         }
         if (edad <0 || edad> 120) {
