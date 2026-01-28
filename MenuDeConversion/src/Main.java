@@ -80,7 +80,6 @@ public class Main {
 
         } while (choice != 5);
 
-
     }
 
     /** * Metodo que retorna un valor capturado por la terminal
@@ -89,18 +88,23 @@ public class Main {
      *  * @return -> double
      *  */
     public static double obtenerDouble(Scanner sc, String mensaje){
-        double valorValido;
+        double valor;
+        boolean esValido = false;
 
-        while(true){
+        do {
             System.out.println(mensaje);
             if (sc.hasNextDouble()){
-                valorValido= sc.nextDouble();
+                valor= sc.nextDouble();
+                esValido= true;
+                System.out.println("El valor es valido");
             } else {
-                System.out.println("El valor ingresado no es un valor numerico");
+                System.out.println("El valor no es numerico,vuelva a ingresar el valor");
                 sc.next();
             }
-            return sc.nextDouble();
-        }
+        } while (!esValido);
+
+        System.out.println(mensaje);
+        return sc.nextDouble();
     }
 
     /** Metodo que convierte los grados Centigrados a Fahrenheit
