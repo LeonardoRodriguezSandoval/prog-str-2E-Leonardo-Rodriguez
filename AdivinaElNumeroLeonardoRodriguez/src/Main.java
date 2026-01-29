@@ -48,6 +48,14 @@ public class Main {
         sc.close();
     }
 
+    /** Metodo para obtener un numero valido
+     *
+     * @param min -> valor minimo previamente declarado en main
+     * @param max -> valor maximo previamente declarado en main
+     * @param scanner -> previamente declarado en main
+     * @param mensaje -> previamente declarado en main
+     * @return -> int de valor
+     */
     public static int obtenerNumero(int min, int max, Scanner scanner, String mensaje){
         int valor;
         while(true) {
