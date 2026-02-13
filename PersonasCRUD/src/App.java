@@ -26,10 +26,19 @@ public class App {
                     personaService.alta(personas, sc);
                     break;
                 case 2:
-
+                    personaService.buscarPorId(personas, sc);
                     break;
                 case 3:
                     personaService.baja(personas, sc);
+                    break;
+                case 4:
+                    personaService.listarActivas(personas, sc);
+                    break;
+                case 5:
+                    personaService.actualizarNombre(personas, sc);
+                    break;
+                case 0:
+                    System.out.println("Selecciono la opcion de salir");
                     break;
                 default:
                     System.out.println("Opcion invalida");
