@@ -1,38 +1,43 @@
 import java.util.Scanner;
 
-public class App {
+public class Menu {
+
     public static void main(String[] args) throws Exception {
 
         int opc;
         Scanner sc= new Scanner(System.in);
-        PersonaService personaService= new PersonaService();
-        Persona[] personas = new Persona[20];
+        AlumnoService alumnoService= new AlumnoService();
+        Alumno[] alumnos = new Alumno[25];
 
         do{
             System.out.println("----Menu----");
-            System.out.println("1.-Alta");
+            System.out.println("1.-Alta Alumno");
             System.out.println("2.-Buscar por ID ");
             System.out.println("3.-Baja logica por ID");
-            System.out.println("4.-Listar activas");
-            System.out.println("5.-Actualizar nombre por ID");
+            System.out.println("4.-Listar activos");
+            System.out.println("5.-Actualizar promedio por ID");
+            System.out.println("6.-Reportes");
             System.out.println("0.-Salir");
             System.out.println("----Menu----");
             opc=sc.nextInt();
             switch (opc) {
                 case 1:
-                    personaService.alta(personas, sc);
+                    alumnoService.alta(alumnos, sc);
                     break;
                 case 2:
-                    personaService.buscarPorId(personas, sc);
+                    alumnoService.buscarPorId(alumnos, sc);
                     break;
                 case 3:
-                    personaService.baja(personas, sc);
+                    alumnoService.baja(alumnos, sc);
                     break;
                 case 4:
-                    personaService.listarActivas(personas, sc);
+                    alumnoService.listarActivas(alumnos, sc);
                     break;
                 case 5:
-                    personaService.actualizarNombre(personas, sc);
+                    alumnoService.actualizarPromedio(alumnos, sc);
+                    break;
+                case 6:
+                    alumnoService.reportes(alumnos, sc);
                     break;
                 case 0:
                     System.out.println("Selecciono la opcion de salir");
@@ -42,4 +47,6 @@ public class App {
             }
         }while(opc!=0);
     }
+
+
 }
