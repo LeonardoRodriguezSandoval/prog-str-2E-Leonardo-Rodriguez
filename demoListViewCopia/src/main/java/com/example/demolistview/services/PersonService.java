@@ -21,15 +21,46 @@ public class PersonService {
             String[] parts = line.split(",");
             String name = parts[0];
             String email = parts[1];
-            result.add("Nombre : " + name + " - " + email);
+            String age = parts[2];
+            result.add(name + " - " + email + " - " + age);
         }
         return result;
+    }
+
+    private List<String> getCleanLines() throws IOException{
+        List<String> lines= repo.readAllLines();
+        List<String> cleanLines = new ArrayList<>();
+        for(String line : lines){
+            if (line!=null && !line.isBlank()){
+                cleanLines.add(line);
+            }
+        }
+        return cleanLines;
+    }
+
+    public void updatePerson(int index, String name, String email, int edad) throws IOException {
+        validate(name,email,edad);
+        if(index<0){
+            throw new IllegalArgumentException("El indice es invalido");
+        }
+        List<String> data=getCleanLines();
+        data.set(index, name+","+email+","+edad);
+        repo.saveFile(data);
     }
 
     public void addPerson (String name, String email, int age) throws IOException {
         validate(name, email, age);
         repo.appendNewLine(name + "," + email);
 
+    }
+
+    public void removePerson (int index) throws IOException{
+        List<String> data = getCleanLines();
+        if (index < 0 || index >= data.size()){
+            throw new IllegalArgumentException("El indice esta fuera de rango");
+        }
+        data.remove(index);
+        repo.saveFile(data);
     }
 
     private void validate(String name, String email, int age){
